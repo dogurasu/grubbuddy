@@ -2,11 +2,13 @@ require("dotenv").config();
 const express = require("express");
 const morgan = require("morgan");
 const db = require("./db"); // you don't need to use /index.js (looks for it by default)
+const cors = require("cors");
 
 // intiailize node app
 const app = express();
 
 // middleware
+app.use(cors()); // avoid cors error
 app.use(express.json());
 
 // routes
@@ -15,12 +17,12 @@ app.get("/api/v1/restaurants", async (req, res) => {
     try {
         // const results = db.query("SELECT * FROM restaurants;") // returns a promise
         const results = await db.query("SELECT * FROM restaurants;") // use async so we can catch the result whenever the query finishes
-        console.log(results);
+        console.log(results.rows);
         res.status(200).json({
             status: "success",
             results: results.rows.length,
             data: {
-                restaurant: results.rows
+                restaurants: results.rows
             }
         });
     } catch (err) {
@@ -51,7 +53,7 @@ app.get("/api/v1/restaurants/:id", async (req, res) => {
 app.post("/api/v1/restaurants", async (req, res) => {
     try {
         const results = await db.query(" INSERT INTO restaurants (name, location, price_range) values ($1, $2, $3) returning *;", [req.body.name, req.body.location, req.body.price_range]);
-        console.log(results.rows[0]);
+        // console.log(results.rows[0]);
         res.status(201).json({
             status: "success",
             data: {
@@ -93,7 +95,7 @@ app.delete("/api/v1/restaurants/:id", async (req, res) => {
 });
 
 // import port from dotenv
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3002;
 app.listen(port, () => {
     console.log(`Server is up and listening on port ${port}`);
 });

@@ -6,15 +6,16 @@ export const RestaurantsContext = createContext();
 
 export const RestaurantsContextProvider = (props) => {
     const [restaurants, setRestaurants] = useState([]); // default value is empty array useState([])
+    const [ selectedRestaurant, setSelectedRestaurant ] = useState(null)
 
     const addRestaurants = (restaurant) => {
         setRestaurants([...restaurants, restaurant]);
-    }
+    };
 
     // in JS syntax, whenever the key and the value are the same, you can just remove the colon (restaurants: restaurants -> restaurants)
     return (
         <RestaurantsContext.Provider
-            value={{restaurants: restaurants, setRestaurants: setRestaurants, addRestaurants}}
+            value={{restaurants: restaurants, setRestaurants: setRestaurants, addRestaurants, selectedRestaurant, setSelectedRestaurant}}
         > 
             {props.children}
         </RestaurantsContext.Provider>

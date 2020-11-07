@@ -1,0 +1,1 @@
+### GrubBuddy is a React application built to create a place for a database of crowd-sourced restaurant reviews.

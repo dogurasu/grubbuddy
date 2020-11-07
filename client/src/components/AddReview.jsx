@@ -6,7 +6,6 @@ const AddReview = () => {
     const { id } = useParams();
     const location = useLocation(); // this location hook gives us access to the id of the restaurant page we are on right now
     const history = useHistory();
-    // console.log(id);
 
     // make it controlled -> use the useState hook x3 for the input field
     const [name, setName] = useState("");
@@ -22,7 +21,6 @@ const AddReview = () => {
                 "review_text": reviewText,
                 "rating": rating
             });
-            // console.log(response);
             history.push("/");
             history.push(location.pathname); // doesn't do anything (if we add a new review, it doesn't show up); thus we need to route to another page and then route back to trigger a refresh
         } catch(err) {
@@ -39,7 +37,7 @@ const AddReview = () => {
                             value={name}
                             onChange={e => setName(e.target.value)}
                             id="name"
-                            placeholder="name"
+                            placeholder="Restaurant Name"
                             type="text"
                             className="form-control"
                         />

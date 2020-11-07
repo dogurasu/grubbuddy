@@ -21,7 +21,6 @@ const AddRestaurant = () => {
                 price_range: priceRange
             })
             addRestaurants(response.data.data.restaurant);
-            console.log(response);
         } catch(err) {
 
         }
@@ -32,10 +31,10 @@ const AddRestaurant = () => {
             <form action="">
                 <div className="form-row">
                     <div className="col">
-                        <input value={name} onChange={e => setName(e.target.value)} type="text" className="form-control" placeholder="name"/>
+                        <input value={name} onChange={e => setName(e.target.value)} type="text" className="form-control" placeholder="Restaurant Name"/>
                     </div>
                     <div className="col">
-                        <input value={location} onChange={e => setLocation(e.target.value)} type="text" className="form-control" placeholder="location"/>
+                        <input value={location} onChange={e => setLocation(e.target.value)} type="text" className="form-control" placeholder="Location"/>
                     </div>
                     <div className="col">
                         <select

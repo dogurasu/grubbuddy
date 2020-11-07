@@ -21,33 +21,6 @@ const Reviews = ({reviews}) => {
                     </div>
                 )
             })}
-            {/* <div className="card text-white bg-primary mb-3 mr-4" style={{maxWidth: "30%"}}>
-                <div className="card-header d-flex justify-content-between">
-                    <span>Joan</span>
-                    <span><StarRating rating={3}/></span>
-                </div>
-                <div className="card-body">
-                    <p className="card-text">This restaurant was awesome.</p>
-                </div>
-            </div>
-            <div className="card text-white bg-primary mb-3 mr-4" style={{maxWidth: "30%"}}>
-                <div className="card-header d-flex justify-content-between">
-                    <span>Joan</span>
-                    <span><StarRating rating={1.2}/></span>
-                </div>
-                <div className="card-body">
-                    <p className="card-text">This restaurant was cookie.</p>
-                </div>
-            </div>
-            <div className="card text-white bg-primary mb-3 mr-4" style={{maxWidth: "30%"}}>
-                <div className="card-header d-flex justify-content-between">
-                    <span>Joan</span>
-                    <span><StarRating rating={2}/></span>
-                </div>
-                <div className="card-body">
-                    <p className="card-text">This restaurant was aight.</p>
-                </div>
-            </div> */}
         </div>
     );
 };

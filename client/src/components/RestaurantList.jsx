@@ -14,7 +14,6 @@ const RestaurantList = (props) => {
             try {
                 const response = await RestaurantFinder.get("/"); // returns a promise, so we want to use await
                 setRestaurants(response.data.data.restaurants); // call setRestaurants to save our state and store our restaurants w/in our state
-                console.log(response);
             } catch(err) {}
         };
 
@@ -57,7 +56,7 @@ const RestaurantList = (props) => {
         <div className="list-group">
             <table className="table table-hover table-dark">
                 <thead>
-                    <tr className="bg-primary">
+                    <tr className="bg-primary restaurant__header">
                         <th scope="col">Restaurant</th>
                         <th scope="col">Location</th>
                         <th scope="col">Price Range</th>
@@ -70,7 +69,7 @@ const RestaurantList = (props) => {
                     {/* // if restaurants exist (means if we successfully fetched our data and then stored it into our context), we will run the rest of this code */}
                     {restaurants && restaurants.map(restaurant => {
                         return (
-                            <tr onClick={() => handleRestaurantSelect(restaurant.id)} key={restaurant.id}>
+                            <tr className="restaurant__single" onClick={() => handleRestaurantSelect(restaurant.id)} key={restaurant.id}>
                                 <td>{restaurant.name}</td>
                                 <td>{restaurant.location}</td>
                                 <td>{"$".repeat(restaurant.price_range)}</td>

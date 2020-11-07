@@ -4,10 +4,8 @@ import { RestaurantsContext } from '../context/RestaurantsContext';
 import RestaurantFinder from "../apis/RestaurantFinder";
 
 const UpdateRestaurant = (props) => {
-    // "destructure" id
     const { id } = useParams();
     let history = useHistory();
-    const { restaurants } = useContext(RestaurantsContext);
     const [name, setName] = useState("");
     const [location, setLocation] = useState("");
     const [priceRange, setPriceRange] = useState("");
@@ -15,7 +13,6 @@ const UpdateRestaurant = (props) => {
     useEffect(() => {
         const fetchData = async() => {
             const response = await RestaurantFinder.get(`/${id}`);
-            console.log(response.data.data);
             setName(response.data.data.restaurant.name);
             setLocation(response.data.data.restaurant.location);
             setPriceRange(response.data.data.restaurant.price_range);
@@ -33,7 +30,6 @@ const UpdateRestaurant = (props) => {
         history.push("/");
     }
 
-    // console.log(id);
     return (
         <div>
             <form action="">

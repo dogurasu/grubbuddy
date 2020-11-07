@@ -1,0 +1,31 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+$color-base: #F08080;
+$color-base-lighter: #A9FBC3;
+$color-contrast: #011627;
+$color-contrast-darker: #935FA7;
+
+.main-header {
+  padding: 2rem;
+}
+
+.form-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.restaurant {
+  &__header {
+    // color: white;
+    // background-color: $color-base!important;
+    // border-color: $color-base!important;
+  }
+  &__single {
+    cursor: pointer;
+    background-color: $color-contrast;
+  }
+}

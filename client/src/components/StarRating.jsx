@@ -14,7 +14,6 @@ const StarRating = ({rating}) => {
         }
     }
     return (
-        // <> </> are React fragments (short syntax)
         <>
         {stars}
         </>

@@ -19,7 +19,6 @@ app.get("/api/v1/restaurants", async (req, res) => {
         // const results = await db.query("SELECT * FROM restaurants;") // use async so we can catch the result whenever the query finishes
         const restaurantRatingsData = await db.query("SELECT * FROM restaurants LEFT JOIN (SELECT restaurant_id, COUNT(*), TRUNC(AVG(rating),1) AS average_rating FROM reviews GROUP BY restaurant_id) reviews ON restaurants.id = reviews.restaurant_id;");
         // console.log("results", results);
-        console.log("restaurantRatings", restaurantRatingsData);
 
         res.status(200).json({
             status: "success",
@@ -43,10 +42,8 @@ app.get("/api/v1/restaurants/:id", async (req, res) => {
         const reviews = await db.query("SELECT * FROM reviews WHERE restaurant_id= $1", [
             req.params.id
         ]);
-        console.log(reviews);
 
         // const results = await db.query("SELECT $2 FROM restaurants WHERE id= $1", [req.params.id, 'name']); // could use this to just get the name of the entry in our DB table where name='name'
-        // console.log(restaurant.rows[0]);
         res.status(200).json({
             status: "success",
             results: restaurant.rows.length,
@@ -111,7 +108,6 @@ app.post("/api/v1/restaurants/:id/addReview", async (req, res) => {
         const newReview = await db.query('INSERT INTO reviews (restaurant_id, name, review_text, rating) values ($1, $2, $3, $4) returning *;', [
             req.params.id, req.body.name, req.body.review_text, req.body.rating
         ]);
-        console.log(newReview);
         res.status(201).json({
             status: 'success',
             data: {
